@@ -1,0 +1,55 @@
+version: '3.8'
+
+services:
+  # 1. Serviço de Banco de Dados (PostgreSQL)
+  db:
+    image: postgres:14-alpine
+    container_name: desafio3_db
+    restart: always
+    environment:
+      # Variáveis usadas pelo PostgreSQL e pela aplicação Flask (app.py)
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: mydb
+    volumes:
+      # Volume Nomeado para persistência do DB
+      - pg_data:/var/lib/postgresql/data
+    networks:
+      - app_network
+      
+  # 2. Serviço de Cache (Redis)
+  redis:
+    image: redis:7-alpine
+    container_name: desafio3_cache
+    restart: always
+    networks:
+      - app_network
+
+  # 3. Serviço Web (Flask API)
+  web:
+    build: ./web  # Usa o Dockerfile da pasta ./web
+    container_name: desafio3_web
+    ports:
+      # Mapeia a porta 5000 do container para a porta 80 do HOST
+      - "80:5000"
+    environment:
+      # Variáveis de ambiente que a aplicação Flask usa para se conectar
+      REDIS_HOST: redis
+      DB_HOST: db
+      # Reutiliza as credenciais do DB
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: mydb
+    # Garante que DB e Cache subam antes do Web.
+    depends_on:
+      - db
+      - redis
+    networks:
+      - app_network
+
+volumes:
+  pg_data:
+
+networks:
+  app_network:
+    driver: bridge
