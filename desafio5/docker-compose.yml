@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  users-service:
+    build: ./users
+    container_name: desafio5_users
+    networks:
+      - microservice_network
+
+  orders-service:
+    build: ./orders
+    container_name: desafio5_orders
+    networks:
+      - microservice_network
+
+  api-gateway:
+    build: ./gateway
+    container_name: desafio5_gateway
+    ports:
+      - "8080:8000"
+    networks:
+      - microservice_network
+    depends_on:
+      - users-service
+      - orders-service
+
+networks:
+  microservice_network:
+    driver: bridge
