@@ -139,7 +139,12 @@ curl http://localhost
 
 A cada curl, os contadores do Redis e do PostgreSQL devem incrementar, comprovando a comunicação com os três serviços.
 
-(Aqui você deve inserir o print mostrando o curl retornando o HTML com os contadores em 5, após 5 requisições.)
+
+
+<img width="1470" height="956" alt="Captura de Tela 2025-11-28 às 13 40 13" src="https://github.com/user-attachments/assets/ed5b018c-2d8e-4c69-9911-c3dd9f48b319" />
+
+
+
 
 4. Desafio 4 — Microsserviços Independentes
 
