@@ -6,48 +6,49 @@ A implementação foi feita utilizando Python/Flask para os serviços de aplica�
 
 1. Desafio 1 — Containers em Rede
 
-Objetivo: Demonstrar a comunicação entre dois containers isolados através de uma rede Docker customizada.
+Objetivo: Demonstrar a comunicação entre dois containers orquestrados através de um docker-compose.yml, que gerencia automaticamente a rede de comunicação.
 
 1.1. Arquitetura e Decisões Técnicas
 
 Serviços: Um Servidor Web (Flask, porta 8080) e um Cliente (Alpine com curl em loop).
 
-Rede: Foi criada uma rede do tipo Bridge nomeada (minha-rede-desafio1).
+Orquestração: Uso do docker-compose.yml para definir e iniciar ambos os serviços simultaneamente.
 
-Comunicação: O Cliente utiliza o Nome do Container (servidor-web) para fazer a requisição, provando que o DNS interno do Docker está funcionando. Isso elimina a necessidade de IPs fixos.
+Rede: O Docker Compose cria uma rede Bridge padrão (nomeada automaticamente) que permite a comunicação entre os serviços.
+
+Comunicação: O serviço cliente utiliza o Nome do Serviço (servidor-web) para fazer a requisição, provando que o DNS interno do Compose está funcionando.
+
+Inicialização: Uso de depends_on para garantir que o servidor-web inicie antes do cliente.
 
 1.2. Estrutura do Projeto
 
-/desafio1
-├── client/
-│   └── Dockerfile (Instala o curl e faz requisição em loop)
-└── server/
-    ├── app.py (Servidor Flask simples)
-    └── Dockerfile
-
+/desafio1 ├── docker-compose.yml (Novo arquivo de orquestração) ├── client/ │   └── Dockerfile (Instala o curl e faz requisição em loop) └── server/     ├── app.py (Servidor Flask simples)     └── Dockerfile
 
 1.3. Instruções de Execução (Passo a Passo)
 
-Crie a rede customizada:
+Navegue até o diretório desafio1.
 
-docker network create minha-rede-desafio1
+Inicie os Serviços O Docker Compose irá construir as imagens, criar a rede e iniciar os dois contêineres.
+
+Bash
+docker compose up --build
+Nota: Remova o -d para ver o log de ambos os serviços no terminal. O log do cliente será a prova da comunicação.
+
+Obtenha o Print O log do contêiner cliente (ou desafio1_cliente_1) deve mostrar as respostas periódicas do servidor-web.
+
+Print: Faça uma captura de tela mostrando o log do terminal com o docker compose up, onde o contêiner do cliente está recebendo as mensagens do servidor.
+
+Limpeza (Opcional) Use o comando de down para parar e remover os contêineres e a rede criada pelo Compose.
+
+Bash
+docker compose down
 
 
-Construa as imagens:
 
-docker build -t imagem-servidor ./desafio1/server
-docker build -t imagem-cliente ./desafio1/client
+<img width="1280" height="832" alt="image" src="https://github.com/user-attachments/assets/5db0fd28-d294-460f-b74e-bc8e668b4c4e" />
 
 
-Inicie o servidor e o cliente na rede:
 
-docker run -d --name servidor-web --network minha-rede-desafio1 imagem-servidor
-docker run --name cliente-curl --network minha-rede-desafio1 imagem-cliente
-
-
-O log do cliente-curl deve mostrar as respostas periódicas do servidor-web.
-
-(Aqui você deve inserir o print do seu terminal mostrando o curl recebendo a resposta.)
 
 2. Desafio 2 — Volumes e Persistência
 
