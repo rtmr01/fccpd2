@@ -31,6 +31,7 @@ Navegue até o diretório desafio1.
 Inicie os Serviços O Docker Compose irá construir as imagens, criar a rede e iniciar os dois contêineres.
 
 
+
 Bash
 docker compose up --build
 Nota: Remova o -d para ver o log de ambos os serviços no terminal. O log do cliente será a prova da comunicação.
@@ -190,7 +191,8 @@ Acesse o endpoint final (Serviço B):
 curl http://localhost:8080/summary
 
 
-(Aqui você deve inserir o print do curl retornando o JSON processado, mostrando apenas os usuários ativos.)
+<img width="1470" height="956" alt="Captura de Tela 2025-11-28 às 13 42 35" src="https://github.com/user-attachments/assets/fbe66c5c-56d2-4a24-88f8-538a3028aa70" />
+
 
 5. Desafio 5 — Microsserviços com API Gateway
 
