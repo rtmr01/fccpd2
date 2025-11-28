@@ -30,6 +30,7 @@ Navegue até o diretório desafio1.
 
 Inicie os Serviços O Docker Compose irá construir as imagens, criar a rede e iniciar os dois contêineres.
 
+
 Bash
 docker compose up --build
 Nota: Remova o -d para ver o log de ambos os serviços no terminal. O log do cliente será a prova da comunicação.
@@ -91,7 +92,11 @@ Limpeza (opcional, para remover o volume):
 docker volume rm dados-contador
 
 
-(Aqui você deve inserir o print dos dois logs, mostrando o valor inicial de 0 e o valor inicial de 3.)
+
+<img width="1470" height="956" alt="Captura de Tela 2025-11-28 às 13 35 16" src="https://github.com/user-attachments/assets/37816d65-465d-4838-b6cf-a6b7658297ca" />
+
+
+<img width="1470" height="956" alt="Captura de Tela 2025-11-28 às 13 35 42" src="https://github.com/user-attachments/assets/40a63a5d-9876-4ec4-9481-ea17d16184b9" />
 
 3. Desafio 3 — Docker Compose Orquestrando Serviços
 
