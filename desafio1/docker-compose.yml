@@ -1,0 +1,12 @@
+version: "3.8"
+
+services:
+  servidor-web:
+    build: ./server
+    ports:
+      - "8080:8080"
+
+  cliente:
+    build: ./client
+    depends_on:
+      - servidor-web
