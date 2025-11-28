@@ -32,6 +32,7 @@ Inicie os Serviços O Docker Compose irá construir as imagens, criar a rede e i
 
 
 
+
 Bash
 docker compose up --build
 Nota: Remova o -d para ver o log de ambos os serviços no terminal. O log do cliente será a prova da comunicação.
@@ -238,5 +239,4 @@ Teste o Proxy Orders: Acessa o orders-service via Gateway.
 
 curl http://localhost:8080/orders
 
-
-(Aqui você deve inserir o print das três chamadas curl (home, users, orders) comprovando que o Gateway está roteando corretamente.)
+<img width="1470" height="956" alt="Captura de Tela 2025-11-28 às 13 47 33" src="https://github.com/user-attachments/assets/1543dbff-14be-4ca1-83ae-6da1d52cf087" />
