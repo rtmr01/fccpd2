@@ -39,10 +39,6 @@ Nota: Remova o -d para ver o log de ambos os serviços no terminal. O log do cli
 
 Obtenha o Print O log do contêiner cliente (ou desafio1_cliente_1) deve mostrar as respostas periódicas do servidor-web.
 
-Print: Faça uma captura de tela mostrando o log do terminal com o docker compose up, onde o contêiner do cliente está recebendo as mensagens do servidor.
-
-Limpeza (Opcional) Use o comando de down para parar e remover os contêineres e a rede criada pelo Compose.
-
 Bash
 docker compose down
 
