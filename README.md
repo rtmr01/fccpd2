@@ -37,8 +37,6 @@ Bash
 docker compose up --build
 Nota: Remova o -d para ver o log de ambos os serviços no terminal. O log do cliente será a prova da comunicação.
 
-Obtenha o Print O log do contêiner cliente (ou desafio1_cliente_1) deve mostrar as respostas periódicas do servidor-web.
-
 Bash
 docker compose down
 
